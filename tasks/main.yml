@@ -1,0 +1,36 @@
+---
+# file: main.yml
+- name: Create project {{ project_name }}
+  oc:
+    state: present
+    inline:
+      kind: ProjectRequest
+      metadata:
+        name: "{{ project_name }}"
+      displayName: "{{ project_display_name }}"
+      description: "{{ project_description }}"
+  register: result
+#- name: Create user {{ user_name }}
+#  oc:
+#    state: present
+#    inline:
+#      kind: User
+#      metadata:
+#        name: "{{ user_name }}"
+#- name: Add project role Admin to user {{ user_name }}
+#  oc:
+#    state: present
+#    inline:
+#      kind: RoleBinding
+#      metadata:
+#        name: admin
+#        namespace: "{{ project_name }}"
+#      roleRef:
+#        name: admin
+#      subjects::
+#      - name: "{{ user_name }}"
+#        kind: "User"
+#  register: result
+- name: Result from change
+  debug:
+    var: result
