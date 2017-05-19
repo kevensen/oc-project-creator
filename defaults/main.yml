@@ -1,2 +1,14 @@
 ---
 # defaults file for kevensen.oc-project-creator
+# Hard quota for the number of pods allowed in a project
+pod_quota: 10
+# Hard quota for the number of services allowed in a project
+service_quota: 10
+# Hard quota for the number of replication controllers allowed in a project
+rc_quota: 10
+# Hard quota for the number of secrets allowed in a project
+secret_quota: 10
+# Hard quota for the number of persistent volume claims allowed in a project
+pvc_quota: 10
+# The role applied to the user who will "own" the project
+project_role: admin

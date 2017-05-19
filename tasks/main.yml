@@ -9,28 +9,36 @@
         name: "{{ project_name }}"
       displayName: "{{ project_display_name }}"
       description: "{{ project_description }}"
-  register: result
-#- name: Create user {{ user_name }}
-#  oc:
-#    state: present
-#    inline:
-#      kind: User
-#      metadata:
-#        name: "{{ user_name }}"
-#- name: Add project role Admin to user {{ user_name }}
-#  oc:
-#    state: present
-#    inline:
-#      kind: RoleBinding
-#      metadata:
-#        name: admin
-#        namespace: "{{ project_name }}"
-#      roleRef:
-#        name: admin
-#      subjects::
-#      - name: "{{ user_name }}"
-#        kind: "User"
-#  register: result
-- name: Result from change
-  debug:
-    var: result
+- name: Create user {{ user_name }}
+  oc:
+    state: present
+    inline:
+      kind: User
+      fullName: "{{ user_name }}"
+      metadata:
+        name: "{{ user_name }}"
+- name: Add project role {{ project_role }} to user {{ user_name }}
+  oc:
+    state: present
+    inline:
+      kind: RoleBinding
+      metadata:
+        name: "{{ project_role }}"
+        namespace: "{{ project_name }}"
+      roleRef:
+        name: "{{ project_role }}"
+      userNames:
+      - "{{ user_name }}"
+- name: Set project quotas
+  oc:
+    inline:
+      kind: ResourceQuota
+      metadata:
+        name: ocp
+        namespace: "{{ project_name }}"
+        hard:
+          pods: "{{ pod_quota }}"
+          services: "{{ service_quota }}"
+          replicationcontrollers: "{{ rc_quota }}"
+          secrets: "{{ secret_quota }}"
+          persistentvolumeclaims: "{{ pvc_quota }}"
