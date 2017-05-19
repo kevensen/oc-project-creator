@@ -31,11 +31,13 @@
       - "{{ user_name }}"
 - name: Set project quotas
   oc:
+    state: present
     inline:
       kind: ResourceQuota
       metadata:
         name: ocp
         namespace: "{{ project_name }}"
+      spec:
         hard:
           pods: "{{ pod_quota }}"
           services: "{{ service_quota }}"
