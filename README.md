@@ -1,4 +1,4 @@
-Role Name
+oc-project-creator
 =========
 
 A brief description of the role goes here.
@@ -6,7 +6,7 @@ A brief description of the role goes here.
 Requirements
 ------------
 
-No
+At least one operational OpenShift Container Platform cluster.
 
 Role Variables
 --------------
