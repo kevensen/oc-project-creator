@@ -1,6 +1,2 @@
 ---
 # vars file for kevensen.oc-project-creator
-project_name: ansibletest
-project_display_name: Ansible Test
-project_description: This is an Ansible Test
-user_name: ansibleuser
