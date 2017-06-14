@@ -9,6 +9,7 @@
         name: "{{ project_name }}"
       displayName: "{{ project_display_name }}"
       description: "{{ project_description }}"
+      validate_certs: "{{ validate_certs }}"
 - name: Create user {{ user_name }}
   oc:
     state: present
@@ -17,6 +18,7 @@
       fullName: "{{ user_name }}"
       metadata:
         name: "{{ user_name }}"
+    validate_certs: "{{ validate_certs }}"
 - name: Add project role {{ project_role }} to user {{ user_name }}
   oc:
     state: present
@@ -29,6 +31,7 @@
         name: "{{ project_role }}"
       userNames:
       - "{{ user_name }}"
+    validate_certs: "{{ validate_certs }}"
 - name: Set project quotas
   oc:
     state: present
@@ -44,3 +47,4 @@
           replicationcontrollers: "{{ rc_quota }}"
           secrets: "{{ secret_quota }}"
           persistentvolumeclaims: "{{ pvc_quota }}"
+      validate_certs: "{{ validate_certs }}"

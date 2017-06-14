@@ -17,5 +17,5 @@ galaxy_info:
   - OCP
   - Kubernetes
 
-dependencies:
-- { role: "kevensen.oc" }
+dependencies: {}
+#- { role: "kevensen.oc" }
