@@ -9,7 +9,7 @@
         name: "{{ project_name }}"
       displayName: "{{ project_display_name }}"
       description: "{{ project_description }}"
-      validate_certs: "{{ validate_certs }}"
+    validate_certs: "{{ validate_certs }}"
 - name: Create user {{ user_name }}
   oc:
     state: present
@@ -47,4 +47,4 @@
           replicationcontrollers: "{{ rc_quota }}"
           secrets: "{{ secret_quota }}"
           persistentvolumeclaims: "{{ pvc_quota }}"
-      validate_certs: "{{ validate_certs }}"
+    validate_certs: "{{ validate_certs }}"
