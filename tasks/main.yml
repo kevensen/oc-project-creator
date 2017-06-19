@@ -10,6 +10,7 @@
       displayName: "{{ project_display_name }}"
       description: "{{ project_description }}"
     validate_certs: "{{ validate_certs }}"
+    token: "{{ ansible_sa_token }}"
 - name: Create user {{ user_name }}
   oc:
     state: present
@@ -19,6 +20,7 @@
       metadata:
         name: "{{ user_name }}"
     validate_certs: "{{ validate_certs }}"
+    token: "{{ ansible_sa_token }}"
 - name: Add project role {{ project_role }} to user {{ user_name }}
   oc:
     state: present
@@ -32,6 +34,7 @@
       userNames:
       - "{{ user_name }}"
     validate_certs: "{{ validate_certs }}"
+    token: "{{ ansible_sa_token }}"
 - name: Set project quotas
   oc:
     state: present
@@ -48,3 +51,4 @@
           secrets: "{{ secret_quota }}"
           persistentvolumeclaims: "{{ pvc_quota }}"
     validate_certs: "{{ validate_certs }}"
+    token: "{{ ansible_sa_token }}"
