@@ -52,3 +52,15 @@
           persistentvolumeclaims: "{{ pvc_quota }}"
     validate_certs: "{{ validate_certs }}"
     token: "{{ ansible_sa_token }}"
+
+- name: Add Managed Label
+  oc:
+    state: present
+    inline:
+      kind: Namespace
+      metadata:
+        name: "{{ project_name }}"
+        labels:
+          ansible_managed: 'true'
+    validate_certs: "{{ validate_certs }}"
+    token: "{{ ansible_sa_token }}"
