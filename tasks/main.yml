@@ -11,6 +11,8 @@
       description: "{{ project_description }}"
     validate_certs: "{{ validate_certs }}"
     token: "{{ ansible_sa_token }}"
+    apiport: "{{ apiport | default(8443) }}"
+    apihost: "{{ apihost | default('localhost') }}"
 - name: Create user {{ user_name }}
   oc:
     state: present
@@ -21,6 +23,8 @@
         name: "{{ user_name }}"
     validate_certs: "{{ validate_certs }}"
     token: "{{ ansible_sa_token }}"
+    apiport: "{{ apiport | default(8443) }}"
+    apihost: "{{ apihost | default('localhost') }}"
 - name: Add project role {{ project_role }} to user {{ user_name }}
   oc:
     state: present
@@ -35,6 +39,8 @@
       - "{{ user_name }}"
     validate_certs: "{{ validate_certs }}"
     token: "{{ ansible_sa_token }}"
+    apiport: "{{ apiport | default(8443) }}"
+    apihost: "{{ apihost | default('localhost') }}"
 - name: Set project quotas
   oc:
     state: present
@@ -52,6 +58,8 @@
           persistentvolumeclaims: "{{ pvc_quota }}"
     validate_certs: "{{ validate_certs }}"
     token: "{{ ansible_sa_token }}"
+    apiport: "{{ apiport | default(8443) }}"
+    apihost: "{{ apihost | default('localhost') }}"
 
 - name: Add Managed Label
   oc:
@@ -64,3 +72,5 @@
           ansible_managed: 'true'
     validate_certs: "{{ validate_certs }}"
     token: "{{ ansible_sa_token }}"
+    apiport: "{{ apiport | default(8443) }}"
+    apihost: "{{ apihost | default('localhost') }}"
