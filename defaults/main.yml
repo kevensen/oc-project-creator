@@ -8,7 +8,7 @@ service_quota: 10
 rc_quota: 10
 # Hard quota for the number of secrets allowed in a project
 secret_quota: 20
-# Hard quota for the number of persistent volume claims allowed in a project
-pvc_quota: 10
+# Hard quota for the size of total allocated storage for a project
+storage_quota: 50Gi
 # The role applied to the user who will "own" the project
 project_role: admin

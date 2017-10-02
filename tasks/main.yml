@@ -55,7 +55,7 @@
           services: "{{ service_quota }}"
           replicationcontrollers: "{{ rc_quota }}"
           secrets: "{{ secret_quota }}"
-          persistentvolumeclaims: "{{ pvc_quota }}"
+          requests.storage: "{{ storage_quota }}"
     validate_certs: "{{ validate_certs }}"
     token: "{{ ansible_sa_token }}"
     apiport: "{{ apiport | default(8443) }}"
